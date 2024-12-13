@@ -1,0 +1,45 @@
+@startuml
+interface IUser{
+    id : number;
+    name : string;
+    email:string;
+    isActive : boolean;
+}
+
+interface ICategory{
+    id : number;
+    name : string;
+    isActive : boolean;
+}
+
+enum STATUS {
+    TODO : 0;
+    INPROGRESS : 1;
+    INREVIEW : 2;
+    DONE: 3;
+}
+
+interface ITask{
+    id : number;
+    name : string;
+    description : string;
+    isActive : boolean;
+    status: STATUS;
+    ICategory : ICategory;
+    ICategoryId : number;
+    IUser : IUser;
+    IUserId : number;
+    ITag : ITag[];
+    ITagIds : number[]
+}
+
+interface ITag{
+    id : number;
+    name : string;
+}
+
+ITask }|..|| ICategory
+ITask }|..|| IUser
+ITask }|..|{ ITag
+
+@enduml
