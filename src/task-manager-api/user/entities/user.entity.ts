@@ -1,6 +1,6 @@
 import { ApiResponseProperty } from '@nestjs/swagger';
 import { ITask } from 'src/shared/interface/task.interface';
-import { IUser } from 'src/shared/interface/user.interface';
+import { IUser, Role } from 'src/shared/interface/user.interface';
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
@@ -21,4 +21,8 @@ export class User implements IUser {
   @ApiResponseProperty()
   @Column({ length: 50 })
   name: string;
+
+  @ApiResponseProperty()
+  @Column({ enum: Role })
+  role: Role;
 }

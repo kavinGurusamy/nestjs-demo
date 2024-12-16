@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsEmail, IsString } from 'class-validator';
-import { IUser } from 'src/shared/interface/user.interface';
+import { IUser, Role } from 'src/shared/interface/user.interface';
 
 export class CreateUserDto implements Omit<IUser, 'id'> {
   @ApiProperty()
@@ -14,4 +14,7 @@ export class CreateUserDto implements Omit<IUser, 'id'> {
   @ApiProperty({ description: 'Length should be minimum of 50' })
   @IsString()
   name: string;
+
+  @ApiProperty()
+  role: Role;
 }

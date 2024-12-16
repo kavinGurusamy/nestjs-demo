@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { DeepPartial, Repository } from 'typeorm';
+import { DeepPartial, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
-export class BaseCrudService<T, CreateDto extends DeepPartial<T>, UpdateDto> {
+export class BaseCrudService<
+  T,
+  CreateDto extends DeepPartial<T>,
+  UpdateDto extends DeepPartial<T>,
+> {
   repository: Repository<T>;
 
   // Create
@@ -21,9 +25,8 @@ export class BaseCrudService<T, CreateDto extends DeepPartial<T>, UpdateDto> {
   }
 
   // Update
-  async update(id: number, updateDto: UpdateDto): Promise<T | undefined> {
-    await this.repository.update(id, updateDto as any);
-    return this.repository.findOne({ where: { id } as any });
+  async update(id: number, updateDto: UpdateDto): Promise<UpdateResult> {
+    return await this.repository.update(id, updateDto as any);
   }
 
   // Delete
