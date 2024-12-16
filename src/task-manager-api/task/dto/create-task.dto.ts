@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
+import { ICreateTaskDto } from 'src/shared/interface/category.interface';
+import { IEntityRelationShipId } from 'src/shared/interface/entity-relationship.interface';
 import { ITask, STATUS } from 'src/shared/interface/task.interface';
 
-export class CreateTaskDto
-  implements Omit<ITask, 'id' | 'category' | 'tags' | 'user'>
-{
+export class CreateTaskDto implements ICreateTaskDto {
   @ApiProperty()
   @IsNumber()
   categoryId: number;
@@ -25,9 +25,8 @@ export class CreateTaskDto
   status: STATUS;
 
   @ApiProperty()
-  tagIds: number[];
+  tagIds: IEntityRelationShipId[];
 
   @ApiProperty()
-  @IsNumber()
-  userId: number;
+  userId: IEntityRelationShipId;
 }

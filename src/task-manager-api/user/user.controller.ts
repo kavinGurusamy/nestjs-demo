@@ -1,9 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseFilters,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { DatabaseExceptionFilter } from 'src/shared/filters/database-exception-filter/database-exception.filter';
+import { FindManyOptions } from 'typeorm';
 
 @Controller('user')
+@UseFilters(DatabaseExceptionFilter)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
