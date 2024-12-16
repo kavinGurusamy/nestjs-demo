@@ -55,7 +55,7 @@ export class Task implements ITask {
   @ApiResponseProperty({ type: Tag })
   @ManyToMany(() => Tag, { cascade: false })
   @JoinTable({
-    name: 'tags',
+    name: 'task_tags',
     joinColumn: { name: 'task_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'tag_id', referencedColumnName: 'id' },
   })

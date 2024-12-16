@@ -1,14 +1,19 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 
+// to load the .env file
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 export function getConfig() {
+  console.log(process.env.DBUSERNAME, 'process.env.DBUSERNAME');
+
   const config = {
     type: 'oracle',
-    thickMode: true,
-    host: this.configService.get('DBHOST'),
-    port: this.configService.get('DBPORT'),
-    username: this.configService.get('DBUSERNAME'),
-    password: this.configService.get('DBPASSWORD'),
-    serviceName: this.configService.get('DBSERVICE'),
+    host: process.env.DBHOST,
+    port: parseInt(process.env.DBPORT),
+    username: process.env.DBUSERNAME,
+    password: process.env.DBPASSWORD,
+    serviceName: process.env.DBSERVICE,
     entities: [__dirname + '/../../task-manager-api/**/*.entity{.ts,.js}'],
     synchronize: false,
     migrations: [__dirname + '/../../migrations/*{.ts,.js}'],

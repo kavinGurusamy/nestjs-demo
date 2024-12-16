@@ -7,7 +7,8 @@ export class BaseCrudService<T, CreateDto, UpdateDto> {
 
   // Create
   async create(createDto: CreateDto): Promise<T[]> {
-    return this.repository.create(createDto as any);
+    const entity = this.repository.create(createDto as any);
+    return this.repository.save(entity);
   }
 
   // Read All

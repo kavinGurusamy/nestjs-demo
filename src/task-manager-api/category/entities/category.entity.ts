@@ -17,11 +17,11 @@ export class Category implements ICategory {
   id: number;
 
   @ApiResponseProperty()
-  @Column({ type: 'boolean' })
+  @Column()
   isActive: boolean;
 
   @ApiResponseProperty()
-  @Column({ type: 'string', length: '50' })
+  @Column({ length: '50' })
   name: string;
 
   @ApiResponseProperty({ type: () => [Task] })
