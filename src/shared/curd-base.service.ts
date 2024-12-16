@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 
 @Injectable()
-export class BaseCrudService<T, CreateDto, UpdateDto> {
+export class BaseCrudService<T, CreateDto extends DeepPartial<T>, UpdateDto> {
   repository: Repository<T>;
 
   // Create
-  async create(createDto: CreateDto): Promise<T[]> {
-    const entity = this.repository.create(createDto as any);
-    return this.repository.save(entity);
+  async create(createDto: CreateDto): Promise<T> {
+    return this.repository.save(createDto);
   }
 
   // Read All

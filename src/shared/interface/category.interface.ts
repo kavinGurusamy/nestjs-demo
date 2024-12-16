@@ -14,7 +14,7 @@ export interface ICreateTaskDto
     ITask,
     'id' | 'category' | 'tags' | 'user' | 'tagIds' | 'userId'
   > {
-  tagIds: IEntityRelationShipId[];
+  tags: IEntityRelationShipId[];
 
-  userId: IEntityRelationShipId;
+  user: IEntityRelationShipId;
 }

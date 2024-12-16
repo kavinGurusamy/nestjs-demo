@@ -25,8 +25,8 @@ export class CreateTaskDto implements ICreateTaskDto {
   status: STATUS;
 
   @ApiProperty()
-  tagIds: IEntityRelationShipId[];
+  tags: IEntityRelationShipId[];
 
   @ApiProperty()
-  userId: IEntityRelationShipId;
+  user: IEntityRelationShipId;
 }
