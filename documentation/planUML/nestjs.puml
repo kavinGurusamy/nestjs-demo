@@ -1,0 +1,40 @@
+@startuml
+package "NestJS Application" {
+  node "Controller" as Controller #LightBlue
+  node "Service" as Service #LightGreen
+  node "Repository" as Repository #LightYellow
+  node "Entity (TypeORM)" as Entity #LightGray
+}
+
+database "Oracle Database (TypeORM)" as OracleDB 
+
+Controller --> Service : Calls
+Service --> Repository : Uses
+Repository --> Entity : Manages
+Repository --> OracleDB : Executes Queries
+
+note right of Controller
+  Handles HTTP requests
+  and sends responses.
+end note
+
+note right of Service
+  Business logic layer.
+  Contains reusable logic.
+end note
+
+note right of Repository
+  Data access layer.
+  Interacts with DB via TypeORM.
+end note
+
+note bottom of Entity
+  Represents database tables.
+  Mapped using TypeORM decorators.
+end note
+
+note bottom of OracleDB
+  Database used for
+  data persistence.
+end note
+@enduml
