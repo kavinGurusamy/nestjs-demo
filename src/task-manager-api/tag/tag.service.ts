@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
-import { BaseCrudService } from 'src/shared/curd-base.service';
+import { BaseCrudService } from 'src/shared/service/curd-base.service';
 import { Tag } from './entities/tag.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';

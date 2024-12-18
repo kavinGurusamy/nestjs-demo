@@ -6,9 +6,7 @@ import { ConfigService } from '@nestjs/config';
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
 
-  async createTypeOrmOptions(
-    connectionName?: string,
-  ): Promise<TypeOrmModuleOptions> {
+  async createTypeOrmOptions(): Promise<TypeOrmModuleOptions> {
     return {
       type: 'oracle',
       thickMode: true,

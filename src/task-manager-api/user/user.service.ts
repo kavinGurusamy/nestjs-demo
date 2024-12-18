@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { BaseCrudService } from 'src/shared/curd-base.service';
+import { BaseCrudService } from 'src/shared/service/curd-base.service';
 import { User } from './entities/user.entity';
 import { ICategory } from 'src/shared/interface/category.interface';
 import { Repository } from 'typeorm';
