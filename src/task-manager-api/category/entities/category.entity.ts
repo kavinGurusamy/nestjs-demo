@@ -23,15 +23,4 @@ export class Category implements ICategory {
   @ApiResponseProperty()
   @Column({ length: '50' })
   name: string;
-
-  @ApiResponseProperty({ type: () => [Task] })
-  @OneToMany(() => Task, (task) => task.category, {
-    onDelete: 'CASCADE',
-    orphanedRowAction: 'delete',
-  })
-  tasks: ITask[];
-
-  @ApiResponseProperty()
-  @RelationId((category: Category) => category.tasks)
-  taskIds: number[];
 }

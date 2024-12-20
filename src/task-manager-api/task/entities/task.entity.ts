@@ -41,12 +41,11 @@ export class Task implements ITask {
   status: number;
 
   @ApiResponseProperty({ type: () => Category })
-  @ManyToOne(() => Category, (category) => category.tasks, {
-    onDelete: 'CASCADE',
-    orphanedRowAction: 'delete',
+  @ManyToOne(() => Category, {
+    cascade: false,
   })
   @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
-  category: Category;
+  category: ICategory;
 
   @ApiResponseProperty()
   @RelationId((task: Task) => task.category)

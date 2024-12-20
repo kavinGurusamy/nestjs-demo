@@ -1,4 +1,5 @@
 import { ICategory } from './category.interface';
+import { IEntityRelationShipId } from './entity-relationship.interface';
 import { ITag } from './tag.interface';
 import { IUser } from './user.interface';
 
@@ -14,6 +15,18 @@ export interface ITask {
   userId: number;
   tags: ITag[];
   tagIds: number[];
+}
+
+export interface ICreateTaskDto
+  extends Omit<
+    ITask,
+    'id' | 'category' | 'tags' | 'user' | 'tagIds' | 'userId' | 'categoryId'
+  > {
+  tags: IEntityRelationShipId[];
+
+  user: IEntityRelationShipId;
+
+  category: IEntityRelationShipId;
 }
 
 export enum STATUS {
