@@ -17,4 +17,18 @@ export class UserService extends BaseCrudService<
     super();
     this.repository = repository;
   }
+
+  async findUsers(name?: string, email?: string) {
+    const queryBuilder = this.repository.createQueryBuilder('user');
+
+    if (name) {
+      queryBuilder.andWhere('user.name = :name', { name });
+    }
+
+    if (email) {
+      queryBuilder.andWhere('user.email = :email', { email });
+    }
+
+    return await queryBuilder.getMany();
+  }
 }

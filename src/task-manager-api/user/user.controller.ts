@@ -13,6 +13,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DatabaseExceptionFilter } from 'src/shared/filters/database-exception-filter/database-exception.filter';
 import { FindManyOptions } from 'typeorm';
+import { IsString } from 'class-validator';
 
 @Controller('user')
 @UseFilters(DatabaseExceptionFilter)
@@ -32,6 +33,11 @@ export class UserController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
+  }
+
+  @Get('find/by-name')
+  findByNameAndEmail(@Param('name') name: string) {
+    return this.userService.findUsers(name);
   }
 
   @Patch(':id')
