@@ -5,16 +5,4 @@ export interface ICategory {
   id: number;
   name: string;
   isActive: boolean;
-  tasks: ITask[];
-  taskIds: number[];
-}
-
-export interface ICreateTaskDto
-  extends Omit<
-    ITask,
-    'id' | 'category' | 'tags' | 'user' | 'tagIds' | 'userId'
-  > {
-  tags: IEntityRelationShipId[];
-
-  user: IEntityRelationShipId;
 }

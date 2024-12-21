@@ -1,14 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
-import { ICreateTaskDto } from 'src/shared/interface/category.interface';
 import { IEntityRelationShipId } from 'src/shared/interface/entity-relationship.interface';
-import { ITask, STATUS } from 'src/shared/interface/task.interface';
+import {
+  ICreateTaskDto,
+  ITask,
+  STATUS,
+} from 'src/shared/interface/task.interface';
 
 export class CreateTaskDto implements ICreateTaskDto {
-  @ApiProperty()
-  @IsNumber()
-  categoryId: number;
-
   @ApiProperty()
   @IsString()
   description: string;
@@ -29,4 +28,7 @@ export class CreateTaskDto implements ICreateTaskDto {
 
   @ApiProperty()
   user: IEntityRelationShipId;
+
+  @ApiProperty()
+  category: IEntityRelationShipId;
 }
